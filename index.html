@@ -134,21 +134,23 @@
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center md:items-start">
         
-        <!-- 個人頭貼區 (最新加入) -->
+        <!-- 個人頭貼區 (更新相容圖片路徑) -->
         <div class="md:col-span-3 flex flex-col items-center justify-center">
           <div class="relative group w-44 h-44 md:w-full md:h-auto md:aspect-square mb-4">
             <!-- 背景光暈特效 -->
             <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-brand-gold to-brand-accent opacity-30 group-hover:opacity-100 blur transition duration-500"></div>
             <!-- 照片主體 -->
             <div class="relative w-full h-full md:aspect-square bg-brand-light rounded-2xl overflow-hidden border border-brand-cream custom-shadow flex items-center justify-center">
-              <img id="profile-img" src="profile.jpg" alt="陳屯櫻" class="w-full h-full object-cover hidden" onload="this.classList.remove('hidden'); document.getElementById('profile-placeholder').classList.add('hidden')" onerror="this.style.display='none';">
-              <!-- 預設頭像佔位符 (若照片尚未載入時顯示) -->
+              <!-- 優先載入 image/profile.jpg，失敗則嘗試載入 profile.jpg，皆失敗才隱藏 img 並顯示佔位符 -->
+              <img id="profile-img" src="image/profile.jpg" alt="陳屯櫻" class="w-full h-full object-cover hidden" 
+                   onload="this.classList.remove('hidden'); document.getElementById('profile-placeholder').classList.add('hidden')" 
+                   onerror="handleImageError(this)">
+              <!-- 預設頭像佔位符 -->
               <div id="profile-placeholder" class="flex flex-col items-center justify-center text-brand-accent p-4 text-center">
                 <div class="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mb-2">
                   <i data-lucide="user-round" class="w-8 h-8 text-brand-accent"></i>
                 </div>
-                <span class="text-xs font-medium tracking-wider">上傳照片後顯示</span>
-                <span class="text-[10px] text-brand-accent/60 mt-1">命名為 profile.jpg</span>
+                <span class="text-xs font-medium tracking-wider">相片載入中...</span>
               </div>
             </div>
           </div>
@@ -398,8 +400,8 @@
             <span class="text-xs font-semibold text-emerald-700 tracking-wider uppercase flex items-center gap-1">
               <i data-lucide="check-circle" class="w-3 h-3"></i> 專家認證實務作品
             </span>
-            <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-accent transition-colors">高階 Excel 自動化 analysis 與 AI 智慧辦公系統</h3>
-            <p class="text-brand-accent text-sm max-w-xl">結合微軟最新 MOS Excel Expert 專家實務與 400 小時職訓所學，搭配 AI 提示詞工程，打造可自動生成財報分析摘要與日常分錄輔助工具。</p>
+            <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-accent transition-colors">高階 Excel 自動化分析與 AI 智慧辦公系統</h3>
+            <p class="text-brand-accent text-sm max-w-xl">結合微軟最新 MOS Excel Expert 專家實務與 400 小時職訓所學，搭配 AI 提示詞工程，打造可自動生成財報 analysis 摘要與日常分錄輔助工具。</p>
           </div>
           <div class="flex items-center gap-2 text-brand-accent group-hover:translate-x-1 transition-transform whitespace-nowrap text-sm font-medium">
             查看詳情 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
@@ -561,7 +563,7 @@
           將最新獲得的 <strong>MOS Excel Expert (Microsoft 365 Apps) 國際專家認證</strong> 結合 400 小時職訓專長落地實作：
         </p>
         <ul class="space-y-2 text-xs text-brand-dark/90 list-disc pl-5">
-          <li><strong>高階數據分析：</strong>運用 Excel 進階分析工具與函數（如 XLOOKUP、樞紐分析、動態陣列），建立多維度交互式財務數據分析表。</li>
+          <li><strong>高階數據分析：</strong>運用 Excel 進階 analysis 工具與函數（如 XLOOKUP、樞紐分析、動態陣列），建立多維度交互式財務數據分析表。</li>
           <li><strong>AI 輔助分錄：</strong>利用大型語言模型建立提示詞工程，自動化生成複雜分錄之中文摘要與傳票說明。</li>
           <li><strong>行政流程自動化：</strong>整合 Excel 報表與雲端網頁表單，減少人工謄寫錯誤，大幅提升資料整合效率達 30% 以上。</li>
         </ul>
@@ -575,6 +577,23 @@
   <script>
     // 初始化 Lucide 圖標
     lucide.createIcons();
+
+    // 處理圖片載入失敗的防呆機制（優先嘗試 image/profile.jpg，次之為 profile.jpg，最後才退回預設 placeholder）
+    function handleImageError(img) {
+      if (img.src.includes('image/profile.jpg')) {
+        // 第一波 fallback：改嘗試載入根目錄的 profile.jpg
+        img.src = 'profile.jpg';
+      } else {
+        // 第二波 fallback：如果都失敗，隱藏圖片並顯示米白人像 icon
+        img.style.display = 'none';
+        const placeholder = document.getElementById('profile-placeholder');
+        if (placeholder) {
+          placeholder.classList.remove('hidden');
+          // 恢復文字說明為上傳引導
+          placeholder.querySelector('span').innerText = '未載入照片';
+        }
+      }
+    }
 
     // 行動版導覽選單切換
     function toggleMobileMenu() {
@@ -617,7 +636,7 @@
       }
     }
 
-    // 一鍵複製聯絡資訊 (針對 iframe 安全限制使用 execCommand 相容方案)
+    // 一鍵複製聯絡資訊
     function copyContact() {
       const textToCopy = "陳屯櫻 聯絡電話：0963351779 | 信箱：Chen-ing@yahoo.com.tw";
       const tempTextArea = document.createElement("textarea");
