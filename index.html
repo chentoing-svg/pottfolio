@@ -28,7 +28,8 @@
               dark: '#2D2924',   /* 碳褐黑文字 */
               accent: '#8C7A65', /* 金屬泥灰/琥珀金 */
               gold: '#C5A880',   /* 金色 */
-              sage: '#708090'    /* 石板灰 */
+              sage: '#708090',   /* 石板灰 */
+              excel: '#107C41'   /* 微軟 Excel 代表綠色 */
             }
           }
         }
@@ -60,6 +61,7 @@
       <div class="hidden md:flex space-x-6 text-sm font-medium text-brand-accent">
         <a href="#about" class="hover:text-brand-dark transition-colors">關於我</a>
         <a href="#skills" class="hover:text-brand-dark transition-colors">專業技能</a>
+        <a href="#credentials" class="hover:text-brand-dark transition-colors">專業證照</a>
         <a href="#portfolio" class="hover:text-brand-dark transition-colors">代表作品</a>
         <a href="#contact" class="hover:text-brand-dark transition-colors">聯絡我</a>
       </div>
@@ -72,6 +74,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-cream px-6 py-4 space-y-3 transition-all duration-300">
       <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">關於我</a>
       <a href="#skills" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">專業技能</a>
+      <a href="#credentials" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">專業證照</a>
       <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">代表作品</a>
       <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">聯絡我</a>
     </div>
@@ -87,12 +90,12 @@
 
     <div class="max-w-3xl mx-auto text-center relative z-10">
       <!-- 專業小標籤 -->
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cream text-brand-accent text-xs font-semibold uppercase tracking-wider mb-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-cream text-brand-accent text-xs font-semibold uppercase tracking-wider mb-6">
         <span class="flex h-2.5 w-2.5 relative">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-accent"></span>
         </span>
-        資深會計 × AI 數位辦公專家
+        資深主辦會計 × MOS Excel 國際專家認證
       </div>
       
       <!-- 姓名與大標題 -->
@@ -104,7 +107,7 @@
       
       <!-- 一句話自我定位 -->
       <p class="text-lg md:text-xl text-brand-accent font-light leading-relaxed max-w-2xl mx-auto mb-10">
-        「用20年財會專業，結合最新 AI 辦公浪潮，為企業建構最精確、最高效的財務與行政基石。」
+        「以 20 年財務會計底蘊為基石，結合 MOS Excel Expert 專家級與 AI 辦公技能，為企業打造精準、高效的數位管理流程。」
       </p>
 
       <!-- 快速動作按鈕 -->
@@ -121,7 +124,7 @@
 
   <!-- 關於我 About Me Section -->
   <section id="about" class="py-20 bg-brand-cream/40 px-6">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-4xl mx-auto">
       <div class="text-center md:text-left mb-12">
         <h2 class="text-2xl md:text-3xl font-bold tracking-wider text-brand-dark flex items-center justify-center md:justify-start gap-3">
           <i data-lucide="user" class="w-6 h-6 text-brand-accent"></i> 關於我 About Me
@@ -129,25 +132,46 @@
         <div class="w-16 h-1 bg-brand-accent mt-3 mx-auto md:mx-0"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-        <!-- 個人頭貼占位 / 文字簡介 -->
-        <div class="md:col-span-8 space-y-6 text-brand-dark/90 leading-relaxed text-base">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center md:items-start">
+        
+        <!-- 個人頭貼區 (最新加入) -->
+        <div class="md:col-span-3 flex flex-col items-center justify-center">
+          <div class="relative group w-44 h-44 md:w-full md:h-auto md:aspect-square mb-4">
+            <!-- 背景光暈特效 -->
+            <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-brand-gold to-brand-accent opacity-30 group-hover:opacity-100 blur transition duration-500"></div>
+            <!-- 照片主體 -->
+            <div class="relative w-full h-full md:aspect-square bg-brand-light rounded-2xl overflow-hidden border border-brand-cream custom-shadow flex items-center justify-center">
+              <img id="profile-img" src="profile.jpg" alt="陳屯櫻" class="w-full h-full object-cover hidden" onload="this.classList.remove('hidden'); document.getElementById('profile-placeholder').classList.add('hidden')" onerror="this.style.display='none';">
+              <!-- 預設頭像佔位符 (若照片尚未載入時顯示) -->
+              <div id="profile-placeholder" class="flex flex-col items-center justify-center text-brand-accent p-4 text-center">
+                <div class="w-16 h-16 rounded-full bg-brand-cream flex items-center justify-center mb-2">
+                  <i data-lucide="user-round" class="w-8 h-8 text-brand-accent"></i>
+                </div>
+                <span class="text-xs font-medium tracking-wider">上傳照片後顯示</span>
+                <span class="text-[10px] text-brand-accent/60 mt-1">命名為 profile.jpg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 個人頭貼旁邊的文字簡介 -->
+        <div class="md:col-span-6 space-y-6 text-brand-dark/90 leading-relaxed text-base">
           <p>
             您好，我是<strong>陳屯櫻</strong>。我擁有超過 <strong>20 年以上的專業會計實務經驗</strong>，橫跨製造業、零售業與服務業。主要專長為全盤帳務、財務報表編製以及營業稅與營所稅之申報。
           </p>
           <p>
-            身為資深主辦會計，我具有極高的抗壓性與解決問題的決心。不僅能獨立流暢地完成月結、年結流程，更能作為與會計師對接的高效窗口。我始終秉持的工作心態是：
+            身為資深主辦會計，我具有極高的抗壓性與解決問題的決心。不論是日常應收應付、傳票開立、編製月結報表，抑或是營業稅與營所稅自主申報，我都秉持著：
             <span class="block mt-2 px-4 py-2 bg-brand-cream border-l-4 border-brand-accent italic text-sm font-semibold text-brand-accent">
               「面對問題，積極解決；事後檢討，持續改進！」
             </span>
           </p>
           <p>
-            面對數位轉型趨勢，我於健行科技大學完成 <strong>400 小時「數位辦公與AI應用培訓」</strong>，將深厚的實務經驗結合最新的 AI 辦公工具，不僅提升了自己的作業效率，更能協助企業建立自動化、標準化的新型態帳務與行政流程。
+            面對數位轉型趨勢，我於健行科技大學完成 <strong>400 小時「數位辦公與AI應用培訓」</strong>，並考取 <strong>Microsoft Office Specialist: Excel Expert (微軟 MOS 專家級)</strong>。我將深厚的財務實務經驗結合高階 Excel 與 AI 辦公工具，協助企業建立最安全、標準且智慧化之帳務流程。
           </p>
         </div>
 
-        <!-- 基本資料摘要卡片 -->
-        <div class="md:col-span-4 bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow space-y-4">
+        <!-- 右側：基本資料摘要卡片 -->
+        <div class="md:col-span-3 bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow space-y-4 w-full">
           <h3 class="font-bold text-lg border-b border-brand-cream pb-2">個人背景</h3>
           <div class="space-y-3 text-sm">
             <div class="flex items-center gap-2">
@@ -156,6 +180,10 @@
             </div>
             <div class="flex items-center gap-2">
               <i data-lucide="award" class="w-4 h-4 text-brand-accent"></i>
+              <span>MOS Excel Expert 國際認證</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="file-check" class="w-4 h-4 text-brand-accent"></i>
               <span>乙級會計事務技術士</span>
             </div>
             <div class="flex items-center gap-2">
@@ -207,14 +235,14 @@
             <div class="w-12 h-12 rounded-lg bg-brand-cream flex items-center justify-center mb-6">
               <i data-lucide="sparkles" class="w-6 h-6 text-brand-accent"></i>
             </div>
-            <h3 class="text-xl font-bold text-brand-dark mb-3">AI 應用與數位辦公</h3>
+            <h3 class="text-xl font-bold text-brand-dark mb-3">高階 Excel 與 AI 應用</h3>
             <p class="text-brand-accent text-sm leading-relaxed mb-6">
-              結訓 400 小時 AI 實務課程。熟練生成式 AI (ChatGPT、Gemini) 輔助行政、文書與分析，提升 30% 以上辦公處理效率。
+              榮獲微軟 MOS Excel Expert 認證。精通複雜公式、分析工具及生成式 AI (ChatGPT、Gemini)，協助財務報表效率再提升。
             </p>
           </div>
           <div class="flex flex-wrap gap-2 pt-4 border-t border-brand-cream/60">
-            <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">AI 輔助行政</span>
-            <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">400hr 職訓</span>
+            <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">Excel Expert</span>
+            <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">AI 智慧行政</span>
           </div>
         </div>
 
@@ -232,6 +260,96 @@
           <div class="flex flex-wrap gap-2 pt-4 border-t border-brand-cream/60">
             <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">丙級網頁設計</span>
             <span class="text-xs bg-brand-cream px-2 py-1 rounded text-brand-accent font-medium">SOP 標準化</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 專業證照與榮譽 Credentials Section -->
+  <section id="credentials" class="py-20 bg-brand-cream/20 px-6 border-t border-brand-cream/40">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold tracking-wider text-brand-dark inline-flex items-center gap-3 justify-center">
+          <i data-lucide="shield-check" class="w-6 h-6 text-brand-accent"></i> 專業證照與數位認證
+        </h2>
+        <div class="w-16 h-1 bg-brand-accent mt-3 mx-auto"></div>
+        <p class="text-brand-accent mt-4 text-sm">國家級專業執照與微軟國際官方認證，保證專業實力</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- MOS Excel 專家級證照 -->
+        <div class="bg-brand-light p-6 rounded-xl border border-brand-gold/40 custom-shadow flex items-start gap-4 hover:border-brand-gold transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+            <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">國際認證</span>
+              <span class="text-xs text-brand-accent font-medium">Microsoft</span>
+            </div>
+            <h4 class="font-bold text-brand-dark text-base">MOS Excel Expert</h4>
+            <p class="text-xs text-brand-accent">Microsoft 365 Apps 專家級認證</p>
+            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream space-y-0.5">
+              <p>取得日期：2026 年 5 月 22 日</p>
+              <p class="flex items-center gap-1">
+                驗證代碼：<span class="font-mono bg-brand-cream px-1.5 py-0.5 rounded text-brand-dark text-[10px]">wYGUu-2FEb</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 乙級會計事務 -->
+        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
+              <span class="text-xs text-brand-accent font-medium">勞動部</span>
+            </div>
+            <h4 class="font-bold text-brand-dark text-base">乙級會計事務技術士</h4>
+            <p class="text-xs text-brand-accent">具備主辦會計與獨立申報之高階財會實力</p>
+            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
+              <p>專業項目：全盤帳務、稅務申報、財務分析</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 丙級網頁設計 -->
+        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+            <i data-lucide="layout" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
+              <span class="text-xs text-brand-accent font-medium">勞動部</span>
+            </div>
+            <h4 class="font-bold text-brand-dark text-base">丙級網頁設計技術士</h4>
+            <p class="text-xs text-brand-accent">具備基礎網頁切版與前端 UI/UX 行政應用</p>
+            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
+              <p>專業項目：HTML/CSS 規劃、版面配置、行政系統網頁</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 丙級電腦軟體應用 -->
+        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+            <i data-lucide="laptop" class="w-6 h-6"></i>
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
+              <span class="text-xs text-brand-accent font-medium">勞動部</span>
+            </div>
+            <h4 class="font-bold text-brand-dark text-base">丙級電腦軟體應用技術士</h4>
+            <p class="text-xs text-brand-accent">具備高效率辦公室文書處理與資料管理技能</p>
+            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
+              <p>專業項目：MS Office 整合實務、高效率行政流程</p>
+            </div>
           </div>
         </div>
       </div>
@@ -277,9 +395,11 @@
         <!-- 作品 3 -->
         <div onclick="openModal('portfolio-3')" class="bg-brand-light p-6 md:p-8 rounded-xl border border-brand-cream custom-shadow hover:custom-shadow-lg cursor-pointer transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group">
           <div class="space-y-2">
-            <span class="text-xs font-semibold text-brand-accent tracking-wider uppercase">AI 數位辦公實作</span>
-            <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-accent transition-colors">AI 智慧辦公表單與文書自動化系統</h3>
-            <p class="text-brand-accent text-sm max-w-xl">利用 400 小時 AI 培訓所學，結合 ChatGPT、Excel 進階函數與 AI 提示詞工程，打造可自動生成會計日常分錄說明與財務摘要分析的輔助系統。</p>
+            <span class="text-xs font-semibold text-emerald-700 tracking-wider uppercase flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3"></i> 專家認證實務作品
+            </span>
+            <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-accent transition-colors">高階 Excel 自動化 analysis 與 AI 智慧辦公系統</h3>
+            <p class="text-brand-accent text-sm max-w-xl">結合微軟最新 MOS Excel Expert 專家實務與 400 小時職訓所學，搭配 AI 提示詞工程，打造可自動生成財報分析摘要與日常分錄輔助工具。</p>
           </div>
           <div class="flex items-center gap-2 text-brand-accent group-hover:translate-x-1 transition-transform whitespace-nowrap text-sm font-medium">
             查看詳情 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
@@ -306,7 +426,7 @@
           <div class="space-y-4">
             <h3 class="text-xl font-bold text-brand-dark">陳屯櫻 <span class="text-sm font-normal text-brand-accent">Chen Tun-Ing</span></h3>
             <p class="text-brand-accent text-sm leading-relaxed">
-              具備二十年深厚財會基石，兼具 AI 智慧數位辦公敏捷力，隨時準備好成為您最穩固的公司後盾。
+              具備二十年深厚財會基石，兼具 MOS Excel 國際專家證照與 AI 智慧辦公敏捷力，隨時準備好成為您最穩固的公司後盾。
             </p>
           </div>
           
@@ -340,7 +460,7 @@
           <div class="space-y-2">
             <h4 class="font-bold text-lg text-brand-dark">誠摯尋求主辦會計 / 行政職務</h4>
             <p class="text-xs text-brand-accent max-w-xs leading-relaxed">
-              不論是鼎新系統操作、營業稅與營所稅自主申報，還是 AI 自動化表格導入，我都能即刻上手。
+              不論是鼎新 ERP 操作、會計師事務所查帳對接、營業稅申報，還是 Excel 巨集與 AI 智慧流程導入，我都能即刻上手。
             </p>
           </div>
           <button onclick="copyContact()" class="w-full py-3 bg-brand-dark hover:bg-brand-accent text-brand-light font-medium text-sm rounded-lg transition-colors flex items-center justify-center gap-2">
@@ -363,6 +483,8 @@
         <span>·</span>
         <a href="#skills" class="hover:text-brand-light transition-colors">專業技能</a>
         <span>·</span>
+        <a href="#credentials" class="hover:text-brand-light transition-colors">專業證照</a>
+        <span>·</span>
         <a href="#portfolio" class="hover:text-brand-light transition-colors">代表作品</a>
         <span>·</span>
         <a href="#contact" class="hover:text-brand-light transition-colors">聯絡我</a>
@@ -371,7 +493,7 @@
   </footer>
 
   <!-- 作品詳細說明 Modal 1 -->
-  <div id="modal-portfolio-1" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div id="modal-portfolio-1" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="closeModalOnBackdrop(event, 'portfolio-1')">
     <div class="bg-brand-light rounded-2xl max-w-lg w-full custom-shadow-lg overflow-hidden border border-brand-cream transition-all transform scale-95 duration-300">
       <div class="bg-brand-cream/60 px-6 py-4 flex justify-between items-center border-b border-brand-cream">
         <span class="text-xs font-bold text-brand-accent tracking-wider uppercase">實務專案一</span>
@@ -397,7 +519,7 @@
   </div>
 
   <!-- 作品詳細說明 Modal 2 -->
-  <div id="modal-portfolio-2" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div id="modal-portfolio-2" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="closeModalOnBackdrop(event, 'portfolio-2')">
     <div class="bg-brand-light rounded-2xl max-w-lg w-full custom-shadow-lg overflow-hidden border border-brand-cream transition-all transform scale-95 duration-300">
       <div class="bg-brand-cream/60 px-6 py-4 flex justify-between items-center border-b border-brand-cream">
         <span class="text-xs font-bold text-brand-accent tracking-wider uppercase">實務專案二</span>
@@ -423,26 +545,28 @@
   </div>
 
   <!-- 作品詳細說明 Modal 3 -->
-  <div id="modal-portfolio-3" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div id="modal-portfolio-3" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden" onclick="closeModalOnBackdrop(event, 'portfolio-3')">
     <div class="bg-brand-light rounded-2xl max-w-lg w-full custom-shadow-lg overflow-hidden border border-brand-cream transition-all transform scale-95 duration-300">
       <div class="bg-brand-cream/60 px-6 py-4 flex justify-between items-center border-b border-brand-cream">
-        <span class="text-xs font-bold text-brand-accent tracking-wider uppercase">實務專案三</span>
+        <span class="text-xs font-bold text-emerald-700 tracking-wider uppercase">實務專案三</span>
         <button onclick="closeModal('portfolio-3')" class="text-brand-accent hover:text-brand-dark">
           <i data-lucide="x" class="w-6 h-6"></i>
         </button>
       </div>
       <div class="p-6 space-y-4">
-        <h3 class="text-xl font-bold text-brand-dark">AI 智慧辦公表單與文書自動化</h3>
+        <h3 class="text-xl font-bold text-brand-dark flex items-center gap-2">
+          高階 Excel 自動化分析與 AI 智慧辦公系統
+        </h3>
         <p class="text-sm text-brand-accent leading-relaxed">
-          將 400 小時「數位辦公與AI應用」職訓專長落地實作之成果：
+          將最新獲得的 <strong>MOS Excel Expert (Microsoft 365 Apps) 國際專家認證</strong> 結合 400 小時職訓專長落地實作：
         </p>
         <ul class="space-y-2 text-xs text-brand-dark/90 list-disc pl-5">
-          <li><strong>AI 輔助分錄撰寫：</strong>利用大型語言模型建立提示詞，自動化生成複雜分錄之中文摘要與傳票說明。</li>
-          <li><strong>Excel 自動化模組：</strong>利用進階函數與樞紐分析，一鍵整合跨期財務比率。</li>
-          <li><strong>網頁行政整合：</strong>結合丙級網頁設計技能，建構雲端行政表單，優化跨部門報支程序。</li>
+          <li><strong>高階數據分析：</strong>運用 Excel 進階分析工具與函數（如 XLOOKUP、樞紐分析、動態陣列），建立多維度交互式財務數據分析表。</li>
+          <li><strong>AI 輔助分錄：</strong>利用大型語言模型建立提示詞工程，自動化生成複雜分錄之中文摘要與傳票說明。</li>
+          <li><strong>行政流程自動化：</strong>整合 Excel 報表與雲端網頁表單，減少人工謄寫錯誤，大幅提升資料整合效率達 30% 以上。</li>
         </ul>
         <div class="bg-brand-cream/30 p-3 rounded text-xs text-brand-accent italic">
-          核心價值：用 AI 解放繁瑣庶務，將時間留給更有價值的財務分析。
+          核心價值：用國際專家級 Excel 算力與 AI 自動化，將繁瑣資料轉為高價值的企業決策數據。
         </div>
       </div>
     </div>
@@ -471,8 +595,10 @@
     function openModal(id) {
       const modal = document.getElementById(`modal-${id}`);
       modal.classList.remove('hidden');
-      modal.querySelector('div').classList.remove('scale-95');
-      modal.querySelector('div').classList.add('scale-100');
+      setTimeout(() => {
+        modal.querySelector('div').classList.remove('scale-95');
+        modal.querySelector('div').classList.add('scale-100');
+      }, 10);
     }
 
     function closeModal(id) {
@@ -482,6 +608,13 @@
       setTimeout(() => {
         modal.classList.add('hidden');
       }, 150);
+    }
+
+    // 點擊背景空白處亦可關閉 Modal 
+    function closeModalOnBackdrop(event, id) {
+      if (event.target === document.getElementById(`modal-${id}`)) {
+        closeModal(id);
+      }
     }
 
     // 一鍵複製聯絡資訊 (針對 iframe 安全限制使用 execCommand 相容方案)
