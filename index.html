@@ -61,7 +61,9 @@
       <div class="hidden md:flex space-x-6 text-sm font-medium text-brand-accent">
         <a href="#about" class="hover:text-brand-dark transition-colors">關於我</a>
         <a href="#skills" class="hover:text-brand-dark transition-colors">專業技能</a>
-        <a href="#credentials" class="hover:text-brand-dark transition-colors">專業證照</a>
+        <a href="credent.html" class="hover:text-brand-dark transition-colors flex items-center gap-1 font-semibold text-brand-accent bg-brand-cream/60 px-3 py-1 rounded-lg border border-brand-cream">
+          <i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i> 專業證照牆
+        </a>
         <a href="#portfolio" class="hover:text-brand-dark transition-colors">代表作品</a>
         <a href="#contact" class="hover:text-brand-dark transition-colors">聯絡我</a>
       </div>
@@ -74,7 +76,9 @@
     <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-brand-cream px-6 py-4 space-y-3 transition-all duration-300">
       <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">關於我</a>
       <a href="#skills" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">專業技能</a>
-      <a href="#credentials" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">專業證照</a>
+      <a href="credent.html" class="block text-sm font-semibold text-brand-accent hover:text-brand-dark py-1 flex items-center gap-1.5">
+        <i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i> 專業證照牆 (外部頁面)
+      </a>
       <a href="#portfolio" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">代表作品</a>
       <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-medium text-brand-accent hover:text-brand-dark py-1">聯絡我</a>
     </div>
@@ -134,14 +138,13 @@
 
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center md:items-start">
         
-        <!-- 個人頭貼區 (更新相容圖片路徑) -->
+        <!-- 個人頭貼區 -->
         <div class="md:col-span-3 flex flex-col items-center justify-center">
           <div class="relative group w-44 h-44 md:w-full md:h-auto md:aspect-square mb-4">
             <!-- 背景光暈特效 -->
             <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-brand-gold to-brand-accent opacity-30 group-hover:opacity-100 blur transition duration-500"></div>
             <!-- 照片主體 -->
             <div class="relative w-full h-full md:aspect-square bg-brand-light rounded-2xl overflow-hidden border border-brand-cream custom-shadow flex items-center justify-center">
-              <!-- 優先載入 image/profile.jpg，失敗則嘗試載入 profile.jpg，皆失敗才隱藏 img 並顯示佔位符 -->
               <img id="profile-img" src="image/profile.jpg" alt="陳屯櫻" class="w-full h-full object-cover hidden" 
                    onload="this.classList.remove('hidden'); document.getElementById('profile-placeholder').classList.add('hidden')" 
                    onerror="handleImageError(this)">
@@ -268,21 +271,28 @@
     </div>
   </section>
 
-  <!-- 專業證照與榮譽 Credentials Section -->
+  <!-- 專業證照與榮譽 Credentials Section (專門作為引導 credent.html 的入口) -->
   <section id="credentials" class="py-20 bg-brand-cream/20 px-6 border-t border-brand-cream/40">
     <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-16">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-cream text-brand-accent text-xs font-semibold tracking-wider mb-3">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-gold animate-pulse"></i> 官方權威認證保證
+        </div>
         <h2 class="text-2xl md:text-3xl font-bold tracking-wider text-brand-dark inline-flex items-center gap-3 justify-center">
-          <i data-lucide="shield-check" class="w-6 h-6 text-brand-accent"></i> 專業證照與數位認證
+          專業證照與數位認證
         </h2>
         <div class="w-16 h-1 bg-brand-accent mt-3 mx-auto"></div>
-        <p class="text-brand-accent mt-4 text-sm">國家級專業執照與微軟國際官方認證，保證專業實力</p>
+        <p class="text-brand-accent mt-4 text-sm">
+          點擊下方卡片，即可一鍵進入「數位證照保險箱」查看高畫質實體證照與官方認證代碼。
+        </p>
       </div>
 
+      <!-- 證照卡片入口 (全部超連結化，點擊引導至 credent.html) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
         <!-- MOS Excel 專家級證照 -->
-        <div class="bg-brand-light p-6 rounded-xl border border-brand-gold/40 custom-shadow flex items-start gap-4 hover:border-brand-gold transition-all duration-300">
-          <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+        <a href="credent.html" class="block bg-brand-light p-6 rounded-xl border border-brand-gold/40 custom-shadow flex items-start gap-4 hover:border-brand-gold hover:custom-shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 group-hover:bg-emerald-100 transition-colors">
             <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
           </div>
           <div class="space-y-1.5">
@@ -290,20 +300,22 @@
               <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">國際認證</span>
               <span class="text-xs text-brand-accent font-medium">Microsoft</span>
             </div>
-            <h4 class="font-bold text-brand-dark text-base">MOS Excel Expert</h4>
+            <h4 class="font-bold text-brand-dark text-base group-hover:text-brand-excel transition-colors flex items-center gap-1">
+              MOS Excel Expert <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-4px] group-hover:translate-x-0"></i>
+            </h4>
             <p class="text-xs text-brand-accent">Microsoft 365 Apps 專家級認證</p>
-            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream space-y-0.5">
+            <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream space-y-0.5 w-full">
               <p>取得日期：2026 年 5 月 22 日</p>
               <p class="flex items-center gap-1">
                 驗證代碼：<span class="font-mono bg-brand-cream px-1.5 py-0.5 rounded text-brand-dark text-[10px]">wYGUu-2FEb</span>
               </p>
             </div>
           </div>
-        </div>
+        </a>
 
         <!-- 乙級會計事務 -->
-        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+        <a href="credent.html" class="block bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent hover:custom-shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-all">
             <i data-lucide="award" class="w-6 h-6"></i>
           </div>
           <div class="space-y-1.5">
@@ -311,17 +323,19 @@
               <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
               <span class="text-xs text-brand-accent font-medium">勞動部</span>
             </div>
-            <h4 class="font-bold text-brand-dark text-base">乙級會計事務技術士</h4>
+            <h4 class="font-bold text-brand-dark text-base group-hover:text-brand-accent transition-colors flex items-center gap-1">
+              乙級會計事務技術士 <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-4px] group-hover:translate-x-0"></i>
+            </h4>
             <p class="text-xs text-brand-accent">具備主辦會計與獨立申報之高階財會實力</p>
             <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
               <p>專業項目：全盤帳務、稅務申報、財務分析</p>
             </div>
           </div>
-        </div>
+        </a>
 
         <!-- 丙級網頁設計 -->
-        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+        <a href="credent.html" class="block bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent hover:custom-shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-all">
             <i data-lucide="layout" class="w-6 h-6"></i>
           </div>
           <div class="space-y-1.5">
@@ -329,17 +343,19 @@
               <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
               <span class="text-xs text-brand-accent font-medium">勞動部</span>
             </div>
-            <h4 class="font-bold text-brand-dark text-base">丙級網頁設計技術士</h4>
+            <h4 class="font-bold text-brand-dark text-base group-hover:text-brand-accent transition-colors flex items-center gap-1">
+              丙級網頁設計技術士 <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-4px] group-hover:translate-x-0"></i>
+            </h4>
             <p class="text-xs text-brand-accent">具備基礎網頁切版與前端 UI/UX 行政應用</p>
             <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
               <p>專業項目：HTML/CSS 規劃、版面配置、行政系統網頁</p>
             </div>
           </div>
-        </div>
+        </a>
 
         <!-- 丙級電腦軟體應用 -->
-        <div class="bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent/40 transition-all duration-300">
-          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0">
+        <a href="credent.html" class="block bg-brand-light p-6 rounded-xl border border-brand-cream custom-shadow flex items-start gap-4 hover:border-brand-accent hover:custom-shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-brand-cream text-brand-accent flex items-center justify-center shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-all">
             <i data-lucide="laptop" class="w-6 h-6"></i>
           </div>
           <div class="space-y-1.5">
@@ -347,14 +363,26 @@
               <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">國家級技術士</span>
               <span class="text-xs text-brand-accent font-medium">勞動部</span>
             </div>
-            <h4 class="font-bold text-brand-dark text-base">丙級電腦軟體應用技術士</h4>
+            <h4 class="font-bold text-brand-dark text-base group-hover:text-brand-accent transition-colors flex items-center gap-1">
+              丙級電腦軟體應用技術士 <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-4px] group-hover:translate-x-0"></i>
+            </h4>
             <p class="text-xs text-brand-accent">具備高效率辦公室文書處理與資料管理技能</p>
             <div class="pt-2 text-[11px] text-brand-accent/80 border-t border-brand-cream">
               <p>專業項目：MS Office 整合實務、高效率行政流程</p>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- 金黃比例高階引導按鈕 -->
+      <div class="text-center mt-12">
+        <a href="credent.html" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-dark text-brand-light rounded-xl hover:bg-brand-accent transition-all duration-300 custom-shadow-lg hover:scale-105 font-bold tracking-wider group border border-brand-gold/20">
+          <i data-lucide="shield-check" class="w-5 h-5 text-brand-gold animate-pulse"></i>
+          進入個人數位證照保險箱
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1.5 transition-transform text-brand-gold"></i>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -485,7 +513,7 @@
         <span>·</span>
         <a href="#skills" class="hover:text-brand-light transition-colors">專業技能</a>
         <span>·</span>
-        <a href="#credentials" class="hover:text-brand-light transition-colors">專業證照</a>
+        <a href="credent.html" class="hover:text-brand-light transition-colors">專業證照</a>
         <span>·</span>
         <a href="#portfolio" class="hover:text-brand-light transition-colors">代表作品</a>
         <span>·</span>
@@ -563,7 +591,7 @@
           將最新獲得的 <strong>MOS Excel Expert (Microsoft 365 Apps) 國際專家認證</strong> 結合 400 小時職訓專長落地實作：
         </p>
         <ul class="space-y-2 text-xs text-brand-dark/90 list-disc pl-5">
-          <li><strong>高階數據分析：</strong>運用 Excel 進階 analysis 工具與函數（如 XLOOKUP、樞紐分析、動態陣列），建立多維度交互式財務數據分析表。</li>
+          <li><strong>高階數據分析：</strong>運用 Excel 進階分析工具與函數（如 XLOOKUP、樞紐分析、動態陣列），建立多維度交互式財務數據分析表。</li>
           <li><strong>AI 輔助分錄：</strong>利用大型語言模型建立提示詞工程，自動化生成複雜分錄之中文摘要與傳票說明。</li>
           <li><strong>行政流程自動化：</strong>整合 Excel 報表與雲端網頁表單，減少人工謄寫錯誤，大幅提升資料整合效率達 30% 以上。</li>
         </ul>
@@ -581,15 +609,12 @@
     // 處理圖片載入失敗的防呆機制（優先嘗試 image/profile.jpg，次之為 profile.jpg，最後才退回預設 placeholder）
     function handleImageError(img) {
       if (img.src.includes('image/profile.jpg')) {
-        // 第一波 fallback：改嘗試載入根目錄的 profile.jpg
         img.src = 'profile.jpg';
       } else {
-        // 第二波 fallback：如果都失敗，隱藏圖片並顯示米白人像 icon
         img.style.display = 'none';
         const placeholder = document.getElementById('profile-placeholder');
         if (placeholder) {
           placeholder.classList.remove('hidden');
-          // 恢復文字說明為上傳引導
           placeholder.querySelector('span').innerText = '未載入照片';
         }
       }
@@ -620,6 +645,7 @@
       }, 10);
     }
 
+    // 關閉 Modal
     function closeModal(id) {
       const modal = document.getElementById(`modal-${id}`);
       modal.querySelector('div').classList.remove('scale-100');
